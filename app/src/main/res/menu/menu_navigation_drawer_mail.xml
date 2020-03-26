@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group
+        android:id="@+id/grp_1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all_items"
+            android:icon="@drawable/ic_assignment"
+            android:title="Metas por Producto"
+            app:actionLayout="@layout/badge_navigation_plain" />
+
+        <item
+            android:id="@+id/nav_saldos_vencidos"
+            android:icon="@drawable/ic_monetization_on"
+            android:title="Saldos Vencidos"
+            app:actionLayout="@layout/badge_navigation_plain" />
+    </group>
+
+
+
+    <group
+
+        android:id="@+id/grp_5"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_help"
+            android:title="Acerca de..." />
+        <item
+            android:id="@+id/nav_action_close"
+            android:icon="@drawable/ic_exit_to_app"
+            android:title="Cerrar sesión" />
+    </group>
+
+</menu>

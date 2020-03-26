@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_5">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStartWithNavigation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            android:scrollingCache="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/spacing_xxlarge"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.jaredrummler.materialspinner.MaterialSpinner
+                            android:id="@+id/spinner01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/grey_80"
+                            app:fontFamily="sans-serif-medium" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <com.jaredrummler.materialspinner.MaterialSpinner
+                            android:id="@+id/spinner02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/grey_80"
+                            app:fontFamily="sans-serif-medium" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtNombreRuta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_xlarge"
+                    android:text="@string/Cargardo"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:textColor="@color/grey_90" />
+
+                <TextView
+                    android:id="@+id/txtCodRuta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:text="@string/Cargardo"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/grey_60" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_mlarge"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnIc_refresh"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_margin="@dimen/spacing_middle"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:tint="@color/light_green_600"
+                        app:srcCompat="@drawable/ic_refresh" />
+
+                    <com.mikhaellopez.circularimageview.CircularImageView
+                        android:id="@+id/image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:civ_background_color="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_user_account_white"
+                        app:civ_border="true"
+                        app:civ_shadow="true"
+                        app:civ_shadow_radius="0"
+                        app:civ_border_color="@color/colorPrimaryDark"
+                        app:civ_border_width="2dp" />
+
+                    <ImageButton
+                        android:id="@+id/idbtn_articulo"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="?attr/actionBarSize"
+                        android:layout_margin="@dimen/spacing_middle"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:tint="@color/light_green_600"
+                        app:srcCompat="@drawable/ic_assignment" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:orientation="vertical">
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_large" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:layout_marginLeft="@dimen/spacing_middle"
+                        android:layout_marginRight="@dimen/spacing_middle"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:visibility="visible"
+                        app:cardCornerRadius="2dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="736dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="META DE VENTAS MONTOS C$"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                                    android:textColor="@color/grey_40" />
+
+                                <ImageView
+                                    android:id="@+id/bt_toggle_text"
+                                    android:layout_width="@dimen/spacing_mxlarge"
+                                    android:layout_height="@dimen/spacing_mxlarge"
+                                    android:tint="@color/orange_300"
+                                    app:srcCompat="@drawable/ic_show_chart" />
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/white"
+                                android:gravity="center_vertical"
+                                android:minHeight="?attr/actionBarSize"
+                                android:orientation="horizontal">
+
+
+                                <com.github.mikephil.charting.charts.PieChart
+                                    android:layout_marginBottom="10dp"
+                                    android:id="@+id/piechart"
+                                    android:layout_width="0dp"
+                                    android:layout_height="200dp"
+                                    android:layout_weight="1" />
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lyt_expand_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey_10" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:background="@color/grey_10" />
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="@dimen/spacing_middle" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/spacing_xxlarge"
+                                            android:gravity="center_vertical"
+                                            android:orientation="horizontal"
+                                            android:paddingLeft="@dimen/spacing_large"
+                                            android:paddingRight="@dimen/spacing_large">
+
+                                            <ImageView
+                                                android:tint="@color/light_green_600"
+                                                app:srcCompat="@drawable/ic_poll"
+                                                android:layout_width="@dimen/spacing_mxlarge"
+                                                android:layout_height="@dimen/spacing_mxlarge" />
+
+                                            <View
+                                                android:layout_width="@dimen/spacing_middle"
+                                                android:layout_height="0dp" />
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Meta Vtas"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                    android:textColor="@color/grey_80"
+                                                    app:fontFamily="sans-serif-medium" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="end"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:id="@+id/txtMetaMonto"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/Cargardo"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                    android:textColor="@color/grey_80"
+                                                    app:fontFamily="sans-serif-medium" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/spacing_xxlarge"
+                                            android:gravity="center_vertical"
+                                            android:orientation="horizontal"
+                                            android:paddingLeft="@dimen/spacing_large"
+                                            android:paddingRight="@dimen/spacing_large">
+
+                                            <ImageView
+
+                                                android:tint="@color/light_green_600"
+                                                app:srcCompat="@drawable/ic_monetization_on"
+                                                android:layout_width="@dimen/spacing_mxlarge"
+                                                android:layout_height="@dimen/spacing_mxlarge"/>
+
+                                            <View
+                                                android:layout_width="@dimen/spacing_middle"
+                                                android:layout_height="0dp" />
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Real Vtas"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                    android:textColor="@color/grey_80"
+                                                    app:fontFamily="sans-serif-medium" />
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="end"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:id="@+id/txtMontoReal"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/Cargardo"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                    android:textColor="@color/grey_80"
+                                                    app:fontFamily="sans-serif-medium" />
+
+
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/spacing_xxlarge"
+                                            android:gravity="center_vertical"
+                                            android:orientation="horizontal"
+                                            android:paddingLeft="@dimen/spacing_large"
+                                            android:paddingRight="@dimen/spacing_large">
+
+                                            <ImageView
+
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:tint="@color/light_green_600"
+                                                app:srcCompat="@drawable/ic_timeline" />
+
+                                            <View
+                                                android:layout_width="@dimen/spacing_middle"
+                                                android:layout_height="0dp" />
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="Cumpl. Vtas"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                    android:textColor="@color/grey_80"
+                                                    app:fontFamily="sans-serif-medium" />
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:gravity="end"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:id="@+id/txtCumpliMonto"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/Cargardo"
+                                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                    android:textColor="@color/grey_80"
+                                                    app:fontFamily="sans-serif-medium" />
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="@dimen/spacing_middle" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_large" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:layout_marginLeft="@dimen/spacing_middle"
+                        android:layout_marginRight="@dimen/spacing_middle"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:visibility="visible"
+                        app:cardCornerRadius="2dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spacing_xmlarge"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="META VENTAS POR ITEMS"
+                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                                    android:textColor="@color/grey_40" />
+
+                                <ImageView
+                                    android:id="@+id/bt_toggle_text02"
+                                    android:layout_width="@dimen/spacing_mxlarge"
+                                    android:layout_height="@dimen/spacing_mxlarge"
+                                    android:tint="@color/orange_300"
+                                    app:srcCompat="@drawable/ic_show_chart" />
+
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/white"
+                                android:gravity="center_vertical"
+                                android:minHeight="?attr/actionBarSize"
+                                android:orientation="horizontal">
+
+
+
+
+                                <com.github.mikephil.charting.charts.PieChart
+                                    android:id="@+id/piechart02"
+                                    android:layout_marginBottom="10dp"
+                                    android:layout_width="0dp"
+                                    android:layout_height="200dp"
+                                    android:layout_weight="1" />
+
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lyt_expand_text02"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grey_10" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:background="@color/grey_10" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_middle" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/spacing_xxlarge"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingLeft="@dimen/spacing_large"
+                                        android:paddingRight="@dimen/spacing_large">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/spacing_mxlarge"
+                                            android:layout_height="@dimen/spacing_mxlarge"
+                                            android:tint="@color/light_green_600"
+                                            app:srcCompat="@drawable/ic_timeline"/>
+
+                                        <View
+                                            android:layout_width="@dimen/spacing_middle"
+                                            android:layout_height="0dp" />
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Meta Items."
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                android:textColor="@color/grey_80"
+                                                app:fontFamily="sans-serif-medium" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/txtCantMeta"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/Cargardo"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                android:textColor="@color/grey_80"
+                                                app:fontFamily="sans-serif-medium" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/spacing_xxlarge"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingLeft="@dimen/spacing_large"
+                                        android:paddingRight="@dimen/spacing_large">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/spacing_mxlarge"
+                                            android:layout_height="@dimen/spacing_mxlarge"
+                                            android:tint="@color/light_green_600"
+                                            app:srcCompat="@drawable/ic_monetization_on"/>
+
+                                        <View
+                                            android:layout_width="@dimen/spacing_middle"
+                                            android:layout_height="0dp" />
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Real Items."
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                android:textColor="@color/grey_80"
+                                                app:fontFamily="sans-serif-medium" />
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/txtRealCant"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/Cargardo"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                android:textColor="@color/grey_80"
+                                                app:fontFamily="sans-serif-medium" />
+
+
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/spacing_xxlarge"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingLeft="@dimen/spacing_large"
+                                        android:paddingRight="@dimen/spacing_large">
+
+                                        <ImageView
+                                            android:layout_width="@dimen/spacing_mxlarge"
+                                            android:layout_height="@dimen/spacing_mxlarge"
+                                            android:tint="@color/light_green_600"
+                                            app:srcCompat="@drawable/ic_timeline"/>
+
+                                        <View
+                                            android:layout_width="@dimen/spacing_middle"
+                                            android:layout_height="0dp" />
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Cumpl. Items."
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                android:textColor="@color/grey_80"
+                                                app:fontFamily="sans-serif-medium" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="end"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/txtCumpliCant"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/Cargardo"
+                                                android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                                                android:textColor="@color/grey_80"
+                                                app:fontFamily="sans-serif-medium" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/spacing_middle" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_large" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

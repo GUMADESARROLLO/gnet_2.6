@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "166127469821",
+    "firebase_url": "https://dev-gumanet.firebaseio.com",
+    "project_id": "dev-gumanet",
+    "storage_bucket": "dev-gumanet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166127469821:android:8ec7a3ee7c3a67e178ea94",
+        "android_client_info": {
+          "package_name": "com.guma.desarrollo.gnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166127469821-thi1n4509t27c4oqhnp18bh7i0vddpd4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3iK5Y3qXnrz4c3jBxIAtstSyIdxT_ohY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166127469821-thi1n4509t27c4oqhnp18bh7i0vddpd4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Gumanet</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyCbNPy5hqDEQFNNRXXXXXXXXXXXXXXXXXXX
+    </string>
+
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="section_format">Section : %1$d</string>
+
+    <string name="about_text">The best android implementation of material UI components. This app implemented based on Google Design Guidelines.
+    </string>
+    <string name="viewGithub">View on GitHub</string>
+    <string name="msg_stock_below_0">La cantidad del producto no puede ser 0</string>
+    <string name="msg_success_add_cart">Éxito agregar el producto</string>
+    <string name="no_internet">Por favor, habilitar la conexión a internet antes de usar la app</string>
+    <string name="failed_fetch_data">¡No se pudieron recuperar los datos! Inténtalo de nuevo.</string>
+    <string name="Cargardo">Cargando...</string>
+    <string name="title_please_wait">Por favor espere&#8230;</string>
+    <string name="login_process">Procesando inicio de sesión en su cuenta&#8230;</string>
+    <string name="whops">Whoops!</string>
+    <string name="login_failed">Usuario o contraseña no válidos!</string>
+    <string name="dialog_ok">OK</string>
+    <string name="login_disabled">La cuenta ha sido deshabilitada, comuníquese con el administrador para habilitar su cuenta</string>
+    <string name="login_title">Buen Trabajo!</string>
+    <string name="login_success">Inicie sesión correctamente&#8230;</string>
+
+</resources>
