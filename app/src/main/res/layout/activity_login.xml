@@ -61,7 +61,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtUsuario"
-                    android:text="F06"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="-4dp"
@@ -95,7 +95,7 @@
                     android:inputType="textPassword"
                     android:maxLength="50"
                     android:maxLines="1"
-                    android:text="NA5493"
+
                     android:singleLine="true"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="@color/blue_600"

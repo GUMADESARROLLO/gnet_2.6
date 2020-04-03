@@ -40,7 +40,7 @@ import static com.gnet.utils.Constant.GET_MORA_RUTA;
 
 public class MoraActivity extends AppCompatActivity {
 
-    TextView NOV,D30,D60,D90,D120,M120;
+    TextView NOV,D30,D60,D90,D120,M120,TVN;
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
     String user_id,user_name,user_empresa;
@@ -61,6 +61,7 @@ public class MoraActivity extends AppCompatActivity {
         D90             = findViewById(R.id.id_D90);
         D120            = findViewById(R.id.id_D120);
         M120            = findViewById(R.id.id_M120);
+        TVN             = findViewById(R.id.id_TVENCIDO);
 
         MyApp = MyApplication.getInstance();
 
@@ -75,13 +76,10 @@ public class MoraActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent iMora02 = new Intent(MoraActivity.this, MoraPorClienteActivity.class);
-                iMora02.putExtra("id_mes", "3");
-                iMora02.putExtra("id_annio", "2020");
-                iMora02.putExtra("id_filtro", "");
-                iMora02.putExtra("id_grafica", "");
                 startActivity(iMora02);
             }
         });
+
 
         NOV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,15 +149,13 @@ public class MoraActivity extends AppCompatActivity {
 
                         List<ObjetoVencidoPorRuta> items = new Gson().fromJson(response, new TypeToken<List<ObjetoVencidoPorRuta>>() {
                         }.getType());
-
-
-
                         NOV.setText(items.get(0).getNoVencidos());
                         D30.setText(items.get(0).getDias30());
                         D60.setText(items.get(0).getDias60());
                         D90.setText(items.get(0).getDias90());
                         D120.setText(items.get(0).getDias120());
                         M120.setText(items.get(0).getMas120());
+                        TVN.setText(String.valueOf(items.get(0).getmTotal()));
                         pdialog.dismiss();
 
                     }

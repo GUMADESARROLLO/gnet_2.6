@@ -1,9 +1,15 @@
 package com.gnet.objetos;
 
 public class ObjetoVencidoPorRuta {
-    String NoVencidos,Dias30,Dias60,Dias90,Dias120,Mas120;
+    String NoVencidos,Dias30,Dias60,Dias90,Dias120,Mas120,mTotal;
 
+    public String getmTotal() {
+        return mTotal;
+    }
 
+    public void setmTotal(String mTotal) {
+        this.mTotal = mTotal;
+    }
 
     public String getNoVencidos() {
         return NoVencidos;

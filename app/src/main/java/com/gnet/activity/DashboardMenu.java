@@ -29,12 +29,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.gnet.utils.Tools;
@@ -70,7 +77,7 @@ public class DashboardMenu extends AppCompatActivity {
     TextView menu_name,menu_empresa;
     MyApplication MyApp;
     String user_id,user_name,user_empresa;
-
+    BarChart barChart;
     private ImageView bt_toggle_text,bt_toggle_text02;
     private View lyt_expand_text,lyt_expand_text02;
 
@@ -118,7 +125,7 @@ public class DashboardMenu extends AppCompatActivity {
         txtCantMeta     = findViewById(R.id.txtCantMeta);
         txtRealCant     = findViewById(R.id.txtRealCant);
         txtCumpliCant   = findViewById(R.id.txtCumpliCant);
-
+        barChart = findViewById(R.id.chart);
         btn_refresh     = findViewById(R.id.btnIc_refresh);
         btn_articulo    = findViewById(R.id.idbtn_articulo);
 
@@ -132,6 +139,8 @@ public class DashboardMenu extends AppCompatActivity {
         spinner02 = findViewById(R.id.spinner02);
         spinner02.setItems(ANNIOS);
         spinner02.setSelectedIndex(Arrays.asList(ANNIOS).indexOf(String.valueOf(cal.get(Calendar.YEAR))));
+
+
 
 
 
@@ -181,6 +190,11 @@ public class DashboardMenu extends AppCompatActivity {
 
                 Intent intent = new Intent(DashboardMenu.this, ListProductoActivity.class);
                 PieEntry pe01 = (PieEntry) e;
+
+                strMes      = String.valueOf((new ArrayList<>(Arrays.asList(MESES_ANNIO)).indexOf(spinner01.getText()) + 1));
+                StrAnnio    = String.valueOf(spinner02.getText());
+
+
                 intent.putExtra("id_mes", strMes);
                 intent.putExtra("id_annio", StrAnnio);
                 intent.putExtra("id_filtro", pe01.getLabel());
@@ -206,6 +220,10 @@ public class DashboardMenu extends AppCompatActivity {
                 Intent intent = new Intent(DashboardMenu.this, ListProductoActivity.class);
                 PieEntry pe02 = (PieEntry) e;
 
+
+                strMes      = String.valueOf((new ArrayList<>(Arrays.asList(MESES_ANNIO)).indexOf(spinner01.getText()) + 1));
+                StrAnnio    = String.valueOf(spinner02.getText());
+
                 intent.putExtra("id_mes", strMes);
                 intent.putExtra("id_annio", StrAnnio);
                 intent.putExtra("id_filtro", pe02.getLabel());
@@ -224,6 +242,9 @@ public class DashboardMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                strMes      = String.valueOf((new ArrayList<>(Arrays.asList(MESES_ANNIO)).indexOf(spinner01.getText()) + 1));
+                StrAnnio    = String.valueOf(spinner02.getText());
+
                 Intent intent = new Intent(DashboardMenu.this, ListProductoActivity.class);
                 intent.putExtra("id_mes", strMes);
                 intent.putExtra("id_annio", StrAnnio);
@@ -233,9 +254,57 @@ public class DashboardMenu extends AppCompatActivity {
 
             }
         });
+        //setData();
 
 
     }
+    private void setData( JSONArray js_data_cumplimiento) {
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        ArrayList<String> labels = new ArrayList<>();
+
+
+
+        try {
+            for (int i = 0; i < js_data_cumplimiento.length(); i++) {
+                JSONObject row = js_data_cumplimiento.getJSONObject(i);
+
+                 float X = Float.valueOf(row.getString("Posicion"));
+                 float Y = Float.valueOf(row.getString("mCumpliento"));
+
+                barEntries.add(new BarEntry( X, Y));
+
+                labels.add(row.getString("Mes"));
+            }
+        }catch (Exception e){
+            Log.e("Error", e.getMessage() );
+        }
+
+
+
+
+
+        BarDataSet barDataSet = new BarDataSet(barEntries, "");
+        barDataSet.setDrawValues(true);
+
+
+        BarData barData = new BarData(barDataSet);
+        barChart.setData(barData);
+        barChart.invalidate();
+        barChart.getAxisRight().setDrawGridLines(false);
+        barChart.getAxisLeft().setDrawGridLines(false);
+        barChart.getXAxis().setDrawGridLines(false);
+        YAxis rightYAxis = barChart.getAxisRight();
+        rightYAxis.setEnabled(false);
+        barChart.setTouchEnabled(false);
+        barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(labels));
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        barChart.getDescription().setEnabled(false);
+        Legend l = barChart.getLegend();
+        l.setEnabled(false);
+
+    }
+
     private void SettingsCharts(PieDataSet pieDataSet, PieChart pieChart,int[] CUSTOMS_COLORS){
         pieDataSet.setColors(CUSTOMS_COLORS);
         pieDataSet.setValueTextSize(25);
@@ -335,6 +404,7 @@ public class DashboardMenu extends AppCompatActivity {
 
                     JSONArray js_data_venta_monto = origen_datos.getJSONArray("data_venta_monto");
                     JSONArray js_data_venta_cantidad = origen_datos.getJSONArray("data_venta_cantidad");
+                    //JSONArray js_data_cumplimiento = origen_datos.getJSONArray("data_comportamiento");
 
                     str_cumplimiento_venta = js_data_venta_monto.getJSONObject(0).optString("mCumpliento");
                     str_cumplimiento_items = js_data_venta_cantidad.getJSONObject(0).optString("mCumpliento");
@@ -373,6 +443,8 @@ public class DashboardMenu extends AppCompatActivity {
                     pieChart02.notifyDataSetChanged();
                     pieChart02.invalidate();
 
+                   // setData(js_data_cumplimiento);
+
 
                 } catch (Exception e) {
                     Log.e("Error",  e.getMessage());
@@ -393,6 +465,10 @@ public class DashboardMenu extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
+
+                strMes      = String.valueOf((new ArrayList<>(Arrays.asList(MESES_ANNIO)).indexOf(spinner01.getText()) + 1));
+                StrAnnio    = String.valueOf(spinner02.getText());
+
                 params.put("Ruta", user_id);
                 params.put("Empresa", user_empresa);
                 params.put("Mes", strMes);
@@ -455,6 +531,10 @@ public class DashboardMenu extends AppCompatActivity {
                 break;
             case R.id.nav_all_items:
                 Intent intent = new Intent(DashboardMenu.this, ListProductoActivity.class);
+
+                strMes      = String.valueOf((new ArrayList<>(Arrays.asList(MESES_ANNIO)).indexOf(spinner01.getText()) + 1));
+                StrAnnio    = String.valueOf(spinner02.getText());
+
                 intent.putExtra("id_mes", strMes);
                 intent.putExtra("id_annio", StrAnnio);
                 intent.putExtra("id_filtro", "");
@@ -464,6 +544,10 @@ public class DashboardMenu extends AppCompatActivity {
 
             case R.id.nav_saldos_vencidos:
                 Intent iMora = new Intent(DashboardMenu.this, MoraActivity.class);
+
+                strMes      = String.valueOf((new ArrayList<>(Arrays.asList(MESES_ANNIO)).indexOf(spinner01.getText()) + 1));
+                StrAnnio    = String.valueOf(spinner02.getText());
+
                 iMora.putExtra("id_mes", strMes);
                 iMora.putExtra("id_annio", StrAnnio);
                 iMora.putExtra("id_filtro", "");

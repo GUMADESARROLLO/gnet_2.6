@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.guma.desarrollo.gnet">
+
     <application
         android:name="com.gnet.activity.MyApplication"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.gnet.activity.MoraPorClienteActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name="com.gnet.activity.UltimosRecibosActivity"></activity>
+        <activity android:name="com.gnet.activity.MoraPorClienteActivity" />
         <activity android:name="com.gnet.activity.MoraActivity" />
         <activity
             android:name="com.gnet.activity.ActivitySplash"
@@ -31,9 +33,9 @@
             android:name="com.gnet.activity.ListProductoActivity"
             android:screenOrientation="portrait" />
     </application>
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
